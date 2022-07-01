@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% extends 'spotify/base.html' %}
+{% block content %}
+    <div>
+        <h2>Press the button and listen to music!</h2>
+        <div class="col-auto" style="margin: 2%">
+            <div class="row" style="margin: 2%">
+                {% for item in all %}
+                    <div class="card" style="width: 18rem; margin:2%">
+                        <img src="{{ item.song_image.url }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.song_author }}</h5>
+                            <a href="{% url 'play' item.id %}" class="btn btn-primary">{{ item.song_title }}</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
